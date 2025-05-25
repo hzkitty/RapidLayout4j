@@ -1,5 +1,6 @@
-package io.github.hzkitty.rapid_layout.entity;
+package io.github.hzkitty.rapidlayout.entity;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,13 +10,13 @@ public class LayoutResult {
     public List<float[]> boxes;
     public List<Float> scores;
     public List<String> classNames;
-    public double elapsed;
+    public double elapse;
 
-    public LayoutResult(List<float[]> boxes, List<Float> scores, List<String> classNames, double elapsed) {
+    public LayoutResult(List<float[]> boxes, List<Float> scores, List<String> classNames, double elapse) {
         this.boxes = boxes;
         this.scores = scores;
         this.classNames = classNames;
-        this.elapsed = elapsed;
+        this.elapse = elapse;
     }
 
     public List<float[]> getBoxes() {
@@ -42,11 +43,21 @@ public class LayoutResult {
         this.classNames = classNames;
     }
 
-    public double getElapsed() {
-        return elapsed;
+    public double getElapse() {
+        return elapse;
     }
 
-    public void setElapsed(double elapsed) {
-        this.elapsed = elapsed;
+    public void setElapse(double elapse) {
+        this.elapse = elapse;
+    }
+
+    @Override
+    public String toString() {
+        return "LayoutResult{" +
+                "boxes=" + (boxes != null ? Arrays.deepToString(boxes.toArray()) : "null") +
+                ", scores=" + scores +
+                ", classNames=" + classNames +
+                ", elapse=" + elapse +
+                '}';
     }
 }

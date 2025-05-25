@@ -1,9 +1,10 @@
-package io.github.hzkitty.rapid_layout.entity;
+package io.github.hzkitty.rapidlayout.entity;
 
 public class OrtInferConfig {
     public int intraOpNumThreads; // 单线程操作线程数
     public int interOpNumThreads; // 多线程操作线程数
     public boolean useCuda; // 是否使用 CUDA
+    public int deviceId;
     public boolean useDml; // 是否使用 DML
     public String modelPath; // 模型路径
     public boolean useArena;
@@ -30,6 +31,14 @@ public class OrtInferConfig {
 
     public void setUseCuda(boolean useCuda) {
         this.useCuda = useCuda;
+    }
+
+    public int getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(int deviceId) {
+        this.deviceId = deviceId;
     }
 
     public boolean isUseDml() {

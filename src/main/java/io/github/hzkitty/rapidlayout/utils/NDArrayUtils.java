@@ -1,4 +1,4 @@
-package io.github.hzkitty.rapid_layout.utils;
+package io.github.hzkitty.rapidlayout.utils;
 
 import ai.djl.ndarray.NDArray;
 import ai.djl.ndarray.NDManager;

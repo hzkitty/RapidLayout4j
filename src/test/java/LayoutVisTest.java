@@ -1,7 +1,9 @@
-import io.github.hzkitty.rapid_layout.RapidLayout;
-import io.github.hzkitty.rapid_layout.VisLayout;
-import io.github.hzkitty.rapid_layout.entity.LayoutResult;
-import io.github.hzkitty.rapid_layout.utils.LoadImage;
+import io.github.hzkitty.rapidlayout.RapidLayout;
+import io.github.hzkitty.rapidlayout.VisLayout;
+import io.github.hzkitty.rapidlayout.entity.LayoutConfig;
+import io.github.hzkitty.rapidlayout.entity.LayoutModelType;
+import io.github.hzkitty.rapidlayout.entity.LayoutResult;
+import io.github.hzkitty.rapidlayout.utils.LoadImage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.opencv.core.Mat;
@@ -13,22 +15,20 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-public class RapidLayoutTest {
+public class LayoutVisTest {
 
     @Test
     public void testLayout() throws Exception {
-//        String modelType = "pp_layout_cdla";
-//        File modelFile = new File("src/test/resources/models/layout_cdla.onnx");
-
-        String modelType = "doclayout_yolo";
         File modelFile = new File("src/test/resources/models/doclayout_yolo_docstructbench_imgsz1024.onnx");
-        String modelPath = modelFile.getAbsolutePath();
-        RapidLayout layout = new RapidLayout(modelType, modelPath, 0.2f, 0.5f, false);
+        LayoutConfig config = new LayoutConfig();
+        config.setModelType(LayoutModelType.DOCLAYOUT_DOCSTRUCTBENCH);
+        config.setModelPath(modelFile.getAbsolutePath());
+        RapidLayout layout = RapidLayout.create(config);
 
         // 调用
-        File file = new File("src/test/resources/pdf_02.jpg");
+        File file = new File("src/test/resources/layout.png");
         String imgContent = file.getAbsolutePath();
-        LayoutResult result = layout.call(imgContent);
+        LayoutResult result = layout.run(imgContent);
         Assertions.assertFalse(result.getBoxes().isEmpty());
 
         System.out.println("检测到: " + result.boxes.size() + " 个框");
@@ -38,7 +38,7 @@ public class RapidLayoutTest {
                     result.scores.get(i),
                     result.classNames.get(i));
         }
-        System.out.println("推理耗时: " + result.elapsed + "秒");
+        System.out.println("推理耗时: " + result.elapse + "秒");
 
         LoadImage loadImg = new LoadImage();
         Mat img = loadImg.call(imgContent);

@@ -1,4 +1,4 @@
-package io.github.hzkitty.rapid_layout.utils;
+package io.github.hzkitty.rapidlayout.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

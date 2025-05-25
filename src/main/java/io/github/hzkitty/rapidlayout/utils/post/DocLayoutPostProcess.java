@@ -1,6 +1,6 @@
-package io.github.hzkitty.rapid_layout.utils.post;
+package io.github.hzkitty.rapidlayout.utils.post;
 
-import io.github.hzkitty.rapid_layout.entity.Triple;
+import io.github.hzkitty.rapidlayout.entity.Triple;
 import org.opencv.core.Size;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package io.github.hzkitty.rapid_layout.entity;
+package io.github.hzkitty.rapidlayout.entity;
 
 import java.util.Objects;
 

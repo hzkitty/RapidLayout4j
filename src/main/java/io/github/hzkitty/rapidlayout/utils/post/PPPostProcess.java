@@ -1,4 +1,4 @@
-package io.github.hzkitty.rapid_layout.utils.post;
+package io.github.hzkitty.rapidlayout.utils.post;
 
 import ai.djl.ndarray.NDArray;
 import ai.djl.ndarray.NDArrays;
@@ -7,7 +7,7 @@ import ai.djl.ndarray.NDManager;
 import ai.djl.ndarray.index.NDIndex;
 import ai.djl.ndarray.types.DataType;
 import ai.djl.ndarray.types.Shape;
-import io.github.hzkitty.rapid_layout.entity.Triple;
+import io.github.hzkitty.rapidlayout.entity.Triple;
 import org.opencv.core.Size;
 
 import java.util.ArrayList;

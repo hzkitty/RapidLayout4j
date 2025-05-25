@@ -1,4 +1,4 @@
-package io.github.hzkitty.rapid_layout.utils.post;
+package io.github.hzkitty.rapidlayout.utils.post;
 
 import java.util.*;
 import java.util.stream.IntStream;

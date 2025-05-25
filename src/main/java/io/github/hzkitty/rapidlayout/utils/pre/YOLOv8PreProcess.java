@@ -1,40 +1,32 @@
-package io.github.hzkitty.rapid_layout.utils.pre;
+package io.github.hzkitty.rapidlayout.utils.pre;
 
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 
-public class DocLayoutPreProcess {
+public class YOLOv8PreProcess {
     private final int targetWidth;
     private final int targetHeight;
 
-    public DocLayoutPreProcess(int width, int height) {
+    public YOLOv8PreProcess(int width, int height) {
         this.targetWidth = width;
         this.targetHeight = height;
     }
 
     /**
-     * 流程：1) BGR->RGB => 2) resize => 3) /255 => 4) permute => 5) expandDims
+     * 流程：1) resize => 2) /255 => 3) permute => 4) expandDims
      */
     public float[][][][] call(Mat img) {
-        if (img == null || img.empty()) {
-            throw new IllegalArgumentException("图像为空");
-        }
-
-        // 1. BGR->RGB
-        Mat rgbImg = new Mat();
-        Imgproc.cvtColor(img, rgbImg, Imgproc.COLOR_BGR2RGB);
-
-        // 2. resize
+        // 1. resize
         Mat resized = new Mat();
-        Imgproc.resize(rgbImg, resized, new Size(targetWidth, targetHeight));
+        Imgproc.resize(img, resized, new Size(targetWidth, targetHeight));
 
-        // 3. /255
+        // 2. /255
         resized.convertTo(resized, CvType.CV_32FC3, 1.0 / 255.0);
 
-        // 4. permute
+        // 3. permute => (C,H,W)
         float[][][] permuted = permute(resized);
 
-        // 5. expandDims
+        // 4. expandDims => [1, C, H, W]
         return expandDims(permuted);
     }
 
@@ -43,6 +35,7 @@ public class DocLayoutPreProcess {
         int width = img.cols();
         int channels = img.channels();
         float[][][] output = new float[channels][height][width];
+
         float[] buffer = new float[height * width * channels];
         img.get(0, 0, buffer);
 

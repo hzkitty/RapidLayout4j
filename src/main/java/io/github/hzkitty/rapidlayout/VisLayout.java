@@ -1,4 +1,4 @@
-package io.github.hzkitty.rapid_layout;
+package io.github.hzkitty.rapidlayout;
 
 import org.opencv.core.*;
 import org.opencv.core.Core;

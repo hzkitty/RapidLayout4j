@@ -1,4 +1,4 @@
-package io.github.hzkitty.rapid_layout.utils.pre;
+package io.github.hzkitty.rapidlayout.utils.pre;
 
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
