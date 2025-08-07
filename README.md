@@ -40,6 +40,10 @@ yolov8n系列来源：[360LayoutAnalysis](https://github.com/360AILAB-NLP/360Lay
 
 由于模型较小，预先将中文版面分析模型(`layout_cdla.onnx`)打包进了jar包内。其余模型在初始化`RapidLayout`类时，通过`LayoutConfig的modelPath`来指定自己模型路径。注意仅限于现在支持的`LayoutModelType`。
 
+## 🛠️ 待办：
+
+* 支持PP-DocLayout-L、PP-DocLayout-M、PP-DocLayout-S最新开源模型 [PP-DocLayout](https://paddlepaddle.github.io/PaddleX/latest/module_usage/tutorials/ocr_modules/layout_detection.html)
+
 ## 🎉 快速开始
 
 安装依赖，默认使用CPU版本
